@@ -1,3 +1,7 @@
+output "arc_machines_id" {
+  description = "Map of id values across all arc_machines, keyed the same as var.arc_machines"
+  value       = { for k, v in azurerm_arc_machine.arc_machines : k => v.id }
+}
 output "arc_machines_identity" {
   description = "Map of identity values across all arc_machines, keyed the same as var.arc_machines"
   value       = { for k, v in azurerm_arc_machine.arc_machines : k => v.identity }
