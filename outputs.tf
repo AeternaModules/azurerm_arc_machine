@@ -4,7 +4,7 @@ output "arc_machines_id" {
 }
 output "arc_machines_identity" {
   description = "Map of identity values across all arc_machines, keyed the same as var.arc_machines"
-  value       = { for k, v in azurerm_arc_machine.arc_machines : k => v.identity if v.identity != null && length(v.identity) > 0 }
+  value       = { for k, v in azurerm_arc_machine.arc_machines : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
 }
 output "arc_machines_kind" {
   description = "Map of kind values across all arc_machines, keyed the same as var.arc_machines"
